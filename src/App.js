@@ -4,7 +4,7 @@ import axios from "axios";
 function App() {
   const [data, setData] = useState({});
   const [location, setLocation] = useState("");
-  const [coords, setCoords] = useState("");
+
 
   let url= `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=298dde8a266bb981b53ffae341d0530d`
 
@@ -22,9 +22,6 @@ function App() {
     ).then(response => {
       setData(response.data);
     });
-
-    setCoords(`Latitude: ${position.coords.latitude}  
-    Longitude: ${position.coords.longitude}`);
   }
   const searchLocation = (event) => {
     if (event.key === "Enter") {
@@ -38,6 +35,7 @@ function App() {
 
   useEffect(() => {
     getLocation();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
